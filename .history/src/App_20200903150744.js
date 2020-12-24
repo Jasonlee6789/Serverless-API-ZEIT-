@@ -2,16 +2,13 @@ import React, { useState, useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import "./App.css";
 
-import useProject from "./api/project";
-
 const App = () => {
   // Initialize state
   const [projects, setProjects] = useState([]);
-  const getProject = useProject();
+
   // Get projects
   useEffect(() => {
-    // fetch("/api/projects")
-    getProject()
+    fetch("/api/projects")
       .then((res) => res.json())
       .then((projects) => setProjects(projects));
   }, []);
